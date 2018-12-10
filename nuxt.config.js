@@ -10,7 +10,7 @@ module.exports = {
         title: 'Morten Sørensen | moso.io',
         meta: [
             { charset: 'utf-8' },
-            { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0' },
+            { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
             { vmid: 'og:description', property: 'og:description', content: 'Portfolio made with Vue.js and Nuxt.js' },
             { vmid: 'og:image', property: 'og:image', content: 'https://moso.io/images/og_image.png' },
             { vmid: 'og:image:secure_url', property: 'og:image:secure_url', content: 'https://moso.io/images/og_image.png' },
