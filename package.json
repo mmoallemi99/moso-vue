@@ -24,18 +24,18 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/router": "^1.1.0",
     "flexgrid.co": "^2.5.0",
-    "node-sass": "^4.10.0",
-    "nuxt": "^2.2.0",
+    "node-sass": "^4.11.0",
+    "nuxt": "^2.3.4",
     "sass-loader": "^7.1.0",
-    "vue-masonry": "^0.11.6",
-    "vue-no-ssr": "^1.0.0"
+    "vue-masonry": "^0.11.7",
+    "vue-no-ssr": "^1.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.9.0",
+    "eslint": "^5.10.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^2.1.1",
-    "eslint-plugin-vue": "^4.7.1"
+    "eslint-plugin-vue": "^5.0.0"
   },
   "homepage": "https://moso.io"
 }
