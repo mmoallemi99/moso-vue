@@ -84,6 +84,15 @@ module.exports = {
         ]
     },
     /*
+    ** Webfontloader
+    */
+    webfontloader: {
+        google: {
+            families: ['Source+Sans+Pro:300,400,600']
+        }
+    },
+
+    /*
     ** Build configuration
     */
     build: {
