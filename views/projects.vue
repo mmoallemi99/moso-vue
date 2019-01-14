@@ -5,7 +5,7 @@
                 <no-ssr>
                     <div class="row" v-masonry transition-duration="0.2s" item-selector=".xl\:6">
                         <div class="sm:12 xl:6 masonry-column" v-masonry-tile v-for="project in projects" :key="project.id">
-                            <moso-project :image="project.image" :project-title="project.title" :sub-title="project.subtitle" :link="project.url" :icon="project.icon">
+                            <moso-project :image="project.image" :project-title="project.title" :sub-title="project.subtitle" :link="project.url" :icon="project.icon" class="moso-project">
                                 <span v-html="project.description"></span>
                             </moso-project>
                         </div>
@@ -24,7 +24,7 @@
                 <no-ssr>
                     <div class="row" v-masonry transition-duration="0.2s" item-selector=".lg\:6">
                         <div class="md:12 lg:6 masonry-column" v-masonry-tile v-for="smallproject in smallprojects" :key="smallproject.id">
-                            <moso-project class="single" :image="smallproject.image" :project-title="smallproject.title" :sub-title="smallproject.subtitle" />
+                            <moso-project class="single moso-project" :image="smallproject.image" :project-title="smallproject.title" :sub-title="smallproject.subtitle" />
                         </div>
                     </div>
                 </no-ssr>
@@ -74,29 +74,29 @@ export default {
 </script>
 <style lang="scss" scoped>
 .masonry-column {
-    & >>> div {
+    .moso-project {
         margin-bottom: 1rem;
 
         @media (min-width: 992px) {
             margin-bottom: 2rem;
         }
-    }
 
-    &:last-of-type {
-        & >>> div {
-            margin-bottom: 0;
+        .project-body {
+            span {
+                p {
+                    margin: 0 0 1rem;
+
+                    &:last-of-type {
+                        margin: 0;
+                    }
+                }
+            }
         }
     }
 
-    & >>> .project-body {
-        span {
-            p {
-                margin: 0 0 1rem;
-
-                &:last-of-type {
-                    margin: 0;
-                }
-            }
+    &:last-of-type {
+        .moso-project {
+            margin-bottom: 0;
         }
     }
 }

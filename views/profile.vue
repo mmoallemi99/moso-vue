@@ -149,7 +149,6 @@ export default {
             tools: []
         }
     },
-
     async asyncData({ req, params }) {
         performance.mark('getProfile:start')
         const [
@@ -222,8 +221,8 @@ export default {
     }
 }
 
-.widget__body >>> .progressbar-container:last-of-type {
-    margin-bottom: 1.55rem;
+.widget .widget__body .button {
+    margin-top: .75rem;
 }
 
 #profile-svg,

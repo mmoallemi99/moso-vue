@@ -6,7 +6,8 @@
 <script>
 export default {
     props: {
-        version: String
+        version: String,
+
     },
     mounted() {
         //
@@ -21,7 +22,7 @@ export default {
     align-items: center;
     justify-content: center;
     height: 20px;
-    margin: 1.125rem 1.5rem;
+    margin: 1.125rem 1.5rem 1.125rem auto;
     padding: .625rem;
     background-color: $dark-blue-gray;
     border-radius: 2px;

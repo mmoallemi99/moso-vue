@@ -47,17 +47,5 @@ export default {
         top: 0;
         z-index: 2;
     }
-
-    & >>> .page-title {
-        h1 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin: 0 0 0 1rem;
-        }
-    }
-
-    & >>> .version-badge {
-        margin-left: auto;
-    }
 }
 </style>

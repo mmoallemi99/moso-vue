@@ -148,7 +148,7 @@ export default {
     }
 
     .media {
-        & >>> p {
+        p {
             margin: 0;
             text-align: center;
             color: $text-color-sidenav;
@@ -244,6 +244,14 @@ export default {
                 }
             }
         }
+    }
+}
+
+.page-title {
+    h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0 0 0 1rem;
     }
 }
 

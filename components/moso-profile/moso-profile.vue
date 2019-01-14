@@ -67,7 +67,7 @@ export default {
     }
 
     .icon-group {
-        margin: .78rem 0 0;
+        margin: .215rem 0 0;
         width: 100%;
         font-size: 1.5rem;
 
