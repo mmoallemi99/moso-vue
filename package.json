@@ -28,14 +28,14 @@
     "nuxt": "^2.3.4",
     "sass-loader": "^7.1.0",
     "vue-masonry": "^0.11.7",
-    "vue-no-ssr": "^1.1.0"
+    "vue-no-ssr": "^1.1.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.10.0",
+    "eslint": "^5.12.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^2.1.1",
-    "eslint-plugin-vue": "^5.0.0",
+    "eslint-plugin-vue": "^5.1.0",
     "nuxt-webfontloader": "^1.0.0"
   },
   "homepage": "https://moso.io"
