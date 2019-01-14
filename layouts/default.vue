@@ -49,7 +49,7 @@
                             </nuxt-link>
                         </li>
                         <li>
-                            <a href="https://moso.blog" target="_blank" rel="noopener">
+                            <a href="https://blog.moso.io" target="_blank" rel="noopener">
                                 <span @click="closeSidenav">
                                     <svg viewBox="0 0 85 87" xmlns="http://www.w3.org/2000/svg" class="ghost-svg">
                                         <rect x=".209" y="69.017" width="33.643" height="17.014" rx="4"/>
