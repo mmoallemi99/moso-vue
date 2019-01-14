@@ -65,7 +65,8 @@ module.exports = {
     */
     modules: [
         '@nuxtjs/router',
-        '@nuxtjs/axios'
+        '@nuxtjs/axios',
+        'nuxt-webfontloader'
     ],
     /*
     ** axios config
@@ -78,6 +79,18 @@ module.exports = {
         '/api/': { target: 'http://api.morten.is', pathRewrite: {'^/api/': ''} }
     },
 
+    /*
+    ** Webfontloader
+    */
+    webfontloader: {
+        google: {
+            families: ['Source+Sans+Pro:300,400,600']
+        }
+    },
+
+    /*
+    ** Routes
+    */
     generate: {
         routes: [
             '/'
