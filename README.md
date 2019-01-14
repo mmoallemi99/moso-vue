@@ -2,23 +2,25 @@
 My personal portfolio (re)built\* with [Vue.js](https://vuejs.org) and [Nuxt.js](https://nuxtjs.org) featuring my own [Flexgrid](https://flexgrid.co).
 
 ### Install
-Run `npm install` or `yarn install` to install the dependencies.
+Run `yarn install` or `npm install` to install the dependencies.
 
 ### Scripts
 Since this project is built with Nuxt, you have the following scripts at hand:
 
 ```shell
-$ npm run dev        # `nuxt` will launch a development server on `localhost:3000` with hot-reloading
-$ npm run build      # `nuxt build` will build your app with webpack, and minify JS & CSS (production)
-$ npm run start      # `nuxt start` will start the server in production mode (after running `nuxt build`)
-$ npm run generate   # `nuxt generate` will build the app and generate every route as HTML files
-$ npm run lint       # ESLint will lint all JS- and Vue-files while ignoring files in `.gitignore`
-$ npm run precommit  # Same as `npm run lint`, however recommended best practice
+$ yarn run dev        # `nuxt` will launch a development server on `localhost:3000` with hot-reloading
+$ yarn run build      # `nuxt build` will build your app with webpack, and minify JS & CSS (production)
+$ yarn run start      # `nuxt start` will start the server in production mode (after running `nuxt build`)
+$ yarn run generate   # `nuxt generate` will build the app and generate every route as HTML files
+$ yarn run lint       # ESLint will lint all JS- and Vue-files while ignoring files in `.gitignore`
+$ yarn run precommit  # Same as `yarn run lint`, however recommended best practice
 ```
 
-The usual workflow is to run `npm run dev` while developing. Then run `npm run build` and `npm run generate` to build the app, where the scripts will generate a `~/dist`-folder. In this folder are all the files you'd upload to your host.
+The usual workflow is to run `yarn run dev` while developing. Then run `yarn run build` and `yarn run generate` to build the app, where the scripts will generate a `~/dist`-folder. In this folder are all the files you'd upload to your host.
 
-You can also run `npm run build` and `npm run start` on a dedicated server to run a node.js server. You will have to set up proxying to `localhost:3000` and point the webroot to `/dist/` for this to work. Some prefer this solution, and it will autogenerate the files if they're changed - ie. an ecommerce solution where the product stock changes all the time.
+You can also run `yarn run build` and `yarn run start` on a dedicated server to run a node.js server. You will have to set up proxying to `localhost:3000` and point the webroot to `/dist/` for this to work. Some prefer this solution, and it will autogenerate the files if they're changed - ie. an ecommerce solution where the product stock changes all the time.
+
+__You can, of course, just use `npm` if you don't have `yarn` available__.
 
 ### Folder structure
 __Almost__ as per Nuxt standard, the folder structure is as follows:
