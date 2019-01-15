@@ -78,7 +78,6 @@ module.exports = {
     proxy: {
         '/api/': { target: 'http://api.morten.is', pathRewrite: {'^/api/': ''} }
     },
-
     /*
     ** Routes
     */
@@ -95,7 +94,6 @@ module.exports = {
             families: ['Source+Sans+Pro:300,400,600']
         }
     },
-
     /*
     ** Build configuration
     */
