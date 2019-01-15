@@ -150,7 +150,9 @@ export default {
         }
     },
     async asyncData({ req, params }) {
-        performance.mark('getProfile:start')
+        if(process.client) {
+            window.performance.mark('getProfile:start')
+        }
         const [
             { data: titles },
             { data: devicons },
@@ -174,7 +176,9 @@ export default {
             infolists,
             tools
         }
-        performance.mark('getProfile:end')
+        if(process.client) {
+            window.performance.mark('getProfile:end')
+        }
     }
 }
 </script>

@@ -51,7 +51,9 @@ export default {
         }
     },
     async asyncData({ req, params }) {
-        performance.mark('getProjects:start')
+        if(process.client) {
+            window.performance.mark('getProjects:start')
+        }
         const [
             { data: projects },
             { data: smallprojects }
@@ -63,7 +65,9 @@ export default {
             projects,
             smallprojects
         }
-        performance.mark('getProjects:end')
+        if(process.client) {
+            window.performance.mark('getProjects:end')
+        }
     },
     mounted() {
         if (typeof this.$redrawVueMasonry === 'function') {
