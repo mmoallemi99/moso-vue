@@ -2,7 +2,7 @@ module.exports = {
     /*
     ** SPA-mode
     */
-    mode: 'spa',
+    mode: 'universal',
     /*
     ** Headers of the page
     */
