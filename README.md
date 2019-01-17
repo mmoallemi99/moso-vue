@@ -1,8 +1,10 @@
 # moso-vue
 My personal portfolio (re)built\* with [Vue.js](https://vuejs.org) and [Nuxt.js](https://nuxtjs.org) featuring my own [Flexgrid](https://flexgrid.co).
 
-### Install
+### Installation
 Run `yarn install` or `npm install` to install the dependencies.
+
+If you want to use [axios](https://axios.nuxtjs.org) to fetch content from an API, you can use the example file `api.json.example` by typing `cp api.json.example api.json`.
 
 ### Scripts
 Since this project is built with Nuxt, you have the following scripts at hand:
@@ -96,14 +98,14 @@ This will generate the routes for `/page-a`, `/page-b`, `/page-c`, `/404`, and w
 # Editing content
 You probably want to edit the content, if you want to copy the site and just change some stuff.
 
-In this Nuxt install, I'm getting my data from a [Strapi](https://strapijs.org) API with axios. You probablyt don't want these data on your page if you're straight up copying it. Thus you'll need to remove those `asyncData`-functions from each page.
+In this Nuxt install, I'm getting my data from a [Strapi](https://strapijs.org) API with axios. These are fetched with URLs exposed from my own API which are not supplied, thus if you clone and compile, you'll get an error. I'm using a JSON-file named `./api.json`. This file contains the URLs I need for the content of my views in JSON-format. Look at [installation](#installation) on how to create your own. The example-file contains an example on the structure I'm using, which you (of course) aren't bound to use. If you want to use a different file than a `.json`-file, then edit each view. There's a `const api = require('~/api.json')`-line in them that you need to edit. Whether or not you want to keep the structure or the file format, you'll need to edit each `axios.get()` in each view. Building the app *will* produce errors otherwise.
 
-It's on my todo-list to throw an error, if the api-request isn't coming from my own server, so you'll notice once you boot up the page.
+I might add something more elegant in the future.
 
 # Custom components
-This project is full of custom and homemade components. Unused components are, of course, not being loaded, to keep `app.js` at a minimum.
+This project is full of custom and homemade components. Unused components are, of course, not being loaded, to keep the app-size at a minimum.
 
-Perhaps I will write some documentation on how they're used, if this is needed. However, since this is just to show my Vue-skills, and since this is a personal website just for me, I haven't written any. **They should be straight forward, though**.
+Perhaps one day I will write some documentation on how they're used, if this is needed. However, since this is just to show my Vue-skills, and since this is a personal website just for me, I haven't written any. **They should be straight forward, though**.
 
 The list is as follows:
 
@@ -119,16 +121,16 @@ This is the small box with the social icons and profile image you see on the fro
 These items are the social icons in said small box.
 
 ##### moso-progressbar
-These are the "switch" progressbars you see in the Skills-section on the profile page. These are not draggable, sorry. A demo can be found on [my CodePen](https://codepen.io/moso/pen/evQxRE).
+These are the progressbars you see in the Skills-section on the profile page.
 
 ##### moso-project
 This is the projects you see on the projects page. This is also where I use [vue-masonry](https://github.com/shershen08/vue-masonry).
 
 ##### moso-sidenav
-This is the sidenav. Yeah... This also includes the sidenav-backdrop - the dark, clickable area that covers the page when the sidebar is active on small devices.
+This is the sidenav. Yeah... This also includes the sidenav-backdrop - the dark, clickable area that covers the page when the sidebar is active on small devices.  There are some left-over attempts on getting drag to work in a mobile browser. Don't think about it.
 
 ##### moso-timeline
-This is the timeline you see on the Resume page. A working demo can be found on [my CodePen](https://codepen.io/moso/pen/MpPRgg) with slightly different styling.
+This is the timeline you see on the Resume page. A working demo can be found on [my CodePen](https://codepen.io/moso/pen/MpPRgg) with Material Design styling.
 
 ##### moso-timeline-item
 Wrapper for the items inside `moso-timeline`.
@@ -144,5 +146,8 @@ This is from the framework [Nano](https://github.com/getnano/nano-framework) tha
 
 # Issues?
 Please report any issues and non-working stuff here on GitHub.
+
+# License
+MIT
 
 \* rebuilt = This site used to be a [Polymer](https://polymer-project.org)-site. But I saw the light and rebuilt it from scratch in Vue.
