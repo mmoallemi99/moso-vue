@@ -76,7 +76,7 @@
                                 </svg>
                             </button>
                             <div class="page-title"><h1>{{ this.$route.name }}</h1></div>
-                            <version-badge version="v4.2-nuxt" />
+                            <version-badge :version="version" />
                         </moso-toolbar>
                     </div>
                     <main>
@@ -94,6 +94,8 @@ import MosoDrawerList from '~/components/moso-drawer-list/moso-drawer-list'
 import MosoToolbar from '~/components/moso-toolbar/moso-toolbar.vue'
 import VersionBadge from '~/components/version-badge/version-badge.vue'
 
+import { version } from '~/package.json'
+
 export default {
     components: {
         'moso-sidenav': MosoSidenav,
@@ -107,6 +109,11 @@ export default {
         },
         closeSidenav() {
             this.$refs.sidenav.close();
+        }
+    },
+    computed: {
+        version() {
+            return version
         }
     }
 }

@@ -1,6 +1,6 @@
 {
   "name": "moso-nuxt",
-  "version": "0.0.1",
+  "version": "v4.5.0-nuxt",
   "description": "moso.io built with Vue.js and Nuxt.js",
   "main": "README.md",
   "scripts": {
