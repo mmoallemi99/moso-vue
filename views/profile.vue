@@ -131,6 +131,8 @@ import NanoRipple from '~/components/nano-ripple/nano-ripple.vue'
 
 import axios from 'axios'
 
+const api = require('~/api.json')
+
 export default {
     layout: 'default',
     components: {
@@ -161,12 +163,12 @@ export default {
             { data: infolists },
             { data: tools }
         ] = await Promise.all([
-            axios.get('https://api.morten.is/titles'),
-            axios.get('https://api.morten.is/devicons'),
-            axios.get('https://api.morten.is/skills'),
-            axios.get('https://api.morten.is/profiles'),
-            axios.get('https://api.morten.is/infolists'),
-            axios.get('https://api.morten.is/tools')
+            axios.get(api.profile.titles),
+            axios.get(api.profile.devicons),
+            axios.get(api.profile.skills),
+            axios.get(api.profile.profiles),
+            axios.get(api.profile.infolists),
+            axios.get(api.profile.tools)
         ])
         return {
             titles,

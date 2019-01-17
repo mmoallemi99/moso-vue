@@ -52,6 +52,8 @@ import TimelineItem from '~/components/moso-timeline/moso-timeline-item.vue'
 
 import axios from 'axios'
 
+const api = require('~/api.json')
+
 export default {
     layout: 'default',
     components: {
@@ -72,8 +74,8 @@ export default {
             { data: experiences },
             { data: educations }
         ] = await Promise.all([
-            axios.get('https://api.morten.is/experiences'),
-            axios.get('https://api.morten.is/educations')
+            axios.get(api.resume.experiences),
+            axios.get(api.resume.educations)
         ])
         return {
             experiences,

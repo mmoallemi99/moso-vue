@@ -1,0 +1,23 @@
+{
+    "view": [
+        {
+            "endpoint1": "https://url",
+            "endpoint2": "https://url",
+            "endpoint3": "https://url"
+        }
+    ],
+    "anotherView": [
+        {
+            "endpoint1": "https://url",
+            "endpoint2": "https://url",
+        }
+    ],
+    "aThirdView": [
+        {
+            "endpoint1": "https://url",
+            "endpoint2": "https://url",
+            "endpoint3": "https://url",
+            "endpoint4": "https://url"
+        }
+    ]
+}

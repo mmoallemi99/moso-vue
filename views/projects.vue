@@ -34,9 +34,11 @@
 </template>
 <script>
 import MosoProject from '~/components/moso-project/moso-project.vue'
-
 import NoSSR from 'vue-no-ssr'
+
 import axios from 'axios'
+
+const api = require('~/api.json')
 
 export default {
     layout: 'default',
@@ -58,8 +60,8 @@ export default {
             { data: projects },
             { data: smallprojects }
         ] = await Promise.all([
-            axios.get('https://api.morten.is/projects'),
-            axios.get('https://api.morten.is/smallprojects')
+            axios.get(api.projects.projects),
+            axios.get(api.projects.smallprojects)
         ])
         return {
             projects,
