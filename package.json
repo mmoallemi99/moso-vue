@@ -15,7 +15,11 @@
     "type": "git",
     "url": "git+https://github.com/moso/moso-nuxt.git"
   },
-  "author": "",
+  "author": {
+      "name": "Morten Sørensen",
+      "email": "morten@moso.io",
+      "url": "https://moso.io"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/moso/moso-nuxt/issues"
