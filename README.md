@@ -20,9 +20,17 @@ $ yarn run precommit  # Same as `yarn run lint`, however recommended best practi
 
 The usual workflow is to run `yarn run dev` while developing. Then run `yarn run build` and `yarn run generate` to build the app, where the scripts will generate a `~/dist`-folder. In this folder are all the files you'd upload to your host.
 
-You can also run `yarn run build` and `yarn run start` on a dedicated server to run a node.js server. You will have to set up proxying to `localhost:3000` and point the webroot to `/dist/` for this to work. Some prefer this solution, and it will autogenerate the files if they're changed - ie. an ecommerce solution where the product stock changes all the time.
+You can also run `yarn run build` and `yarn run start` on a dedicated server to run a node.js server. You will have to set up proxying to `localhost:3000` and point the webroot to `/dist/` for this to work. Some prefer this solution, and it will autogenerate the files if they're changed - ie. an ecommerce solution where the product stock changes all the time. However, since I prefer to generate a static page and host it on my webserver, I run `yarn run generate` and upload. It's all personal preference - I'm just briefly explaining the options here.
 
 __You can, of course, just use `npm` if you don't have `yarn` available__.
+
+### Modern bundle
+As of 2019 I'm utilising something called 'modern bundle'. This is very well illustrated by [Addy Osmani](https://github.com/addyosmani), prominent engineer at Google:
+![image](https://pbs.twimg.com/media/Dwbv4WLV4AA_J6R?format=jpg)
+
+This illustration shows that using ES modules, we can cut a huge chunk of file size, and thus loading time. However, to still support older browsers, there's the 'legacy bundle'. Nuxt supports generating both. When building, I'm using a flag called `--modern=client`. This tells webpack to build both modern and legacy bundles, and serve them both. For the browser not to download both bundles, `<script type="module">` is used for 'modern' and `<script nomodule>` is used for legacy. `nomodule` was intended to be a mechanism for loading ES modules (and their dependencies) in the browser, but we don't have to use it __just__ for that. And since browsers that support `type="module` also supports `async()`/`await()`, Classes, arrow functions (`let a = () => {}`), `fetch()`, `Promise()`, `Map`, `Set`, etc, then it's obvious to use the modern bundle with `type="module"`.
+
+However! If you serve your site with Node.js, you can set the build mode to `--modern=server` in `~/package.json`'s scripts. Using `server` will tell Node to evaluate what bundle to serve to the browser, thus not serving both bundles. More info on [Nuxt api docs](https://nuxtjs.org/api/configuration-modern).
 
 ### Folder structure
 __Almost__ as per Nuxt standard, the folder structure is as follows:
@@ -44,7 +52,7 @@ All custom plugin loaders and, in this case, directives and classes resides in t
 
 All static content like images and fonts are stored in the `~/static`-folder, as per Nuxt standard.
 
-\* = The only difference from a standard Nuxt installation is, that I'm using a custom router config. Since the standard Nuxt generation of routes doesn't allow me to name routes manually, which I need for `this.$route.name` in the toolbar, I had to solve it this way. That means that all pages that in a standard Nuxt install resides in `~/pages`, are now stored in `~/views`, and manually set up in `/router.js`. The Nuxt config is only set to generate the `/`-route, as this is needed for the index page to work.
+\* = The only difference from a standard Nuxt installation is, that I'm using a custom router config. Since the standard Nuxt generation of routes doesn't allow me to name routes manually, which I need for `this.$route.name` in the toolbar, I had to solve it this way. That means that all pages that in a standard Nuxt install resides in `~/pages`, are now stored in `~/views`, and manually set up in `~/router.js`. The Nuxt config is only set to generate the `/`-route, as this is needed for the index page to work.
 
 ### Routing
 As mentioned, all routes have to be set up manually. However, it's rather straight forward, and it follows [vue-router](https://router.vuejs.org/en/essentials/named-routes.html)'s scheme. All routes are residing in `/router.js`. Here's an example:
