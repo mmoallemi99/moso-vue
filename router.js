@@ -10,7 +10,7 @@ Vue.use(Router)
 
 export function createRouter() {
     return new Router({
-        //mode: 'history',
+        mode: 'history',
         linkActiveClass: 'router-link-active',
         routes: [
             {
