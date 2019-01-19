@@ -1,0 +1,22 @@
+// This is an example on how I'm using my `api.config.js`.
+
+export const view1Suffix = {
+    endpoint1: "https://url",
+    endpoint2: "https://url",
+    endpoint3: "https://url",
+    endpoint4: "https://url",
+    endpoint5: "https://url",
+    endpoint6: "https://url"
+}
+
+export const view2Suffix = {
+    endpoint1: "https://url",
+    endpoint2: "https://url"
+
+}
+
+export const projectsApi = {
+    endpoint1: "https://url",
+    endpoint2: "https://url",
+    endpoint3: "https://url"
+}
