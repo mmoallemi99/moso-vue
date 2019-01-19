@@ -57,7 +57,7 @@ export default {
             window.performance.mark('getProjects:start')
         }
         let promises = []
-        for (let [key, value] of Object.entries(projectsView)) {
+        for (let [key, value] of Object.entries(projectsApi)) {
             promises.push(axios.get(`${value}`))
         }
         const [

@@ -156,7 +156,7 @@ export default {
             window.performance.mark('getProfile:start')
         }
         let promises = []
-        for (let [key, value] of Object.entries(profile)) {
+        for (let [key, value] of Object.entries(profileApi)) {
             promises.push(axios.get(`${value}`))
         }
         const [

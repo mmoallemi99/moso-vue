@@ -71,7 +71,7 @@ export default {
             window.performance.mark('getResume:start')
         }
         let promises = []
-        for (let [key, value] of Object.entries(resume)) {
+        for (let [key, value] of Object.entries(resumeApi)) {
             promises.push(axios.get(`${value}`))
         }
         const [
