@@ -4,7 +4,7 @@ My personal portfolio (re)built\* with [Vue.js](https://vuejs.org) and [Nuxt.js]
 ### Installation
 Run `yarn install` or `npm install` to install the dependencies.
 
-If you want to use [axios](https://axios.nuxtjs.org) to fetch content from an API, you can use the example file `api.json.example` by typing `cp api.json.example api.json`.
+If you want to use [axios](https://axios.nuxtjs.org) to fetch content from an API, you can use the example file `api.config.js.example` by typing `cp api.config.js.example api.config.js` in your favorite terminal.
 
 ### Scripts
 Since this project is built with Nuxt, you have the following scripts at hand:
@@ -106,7 +106,7 @@ This will generate the routes for `/page-a`, `/page-b`, `/page-c`, `/404`, and w
 # Editing content
 You probably want to edit the content, if you want to copy the site and just change some stuff.
 
-In this Nuxt install, I'm getting my data from a [Strapi](https://strapijs.org) API with axios. These are fetched with URLs exposed from my own API which are not supplied, thus if you clone and compile, you'll get an error. I'm using a JSON-file named `./api.json`. This file contains the URLs I need for the content of my views in JSON-format. Look at [installation](#installation) on how to create your own. The example-file contains an example on the structure I'm using, which you (of course) aren't bound to use. If you want to use a different file than a `.json`-file, then edit each view. There's a `const api = require('~/api.json')`-line in them that you need to edit. Whether or not you want to keep the structure or the file format, you'll need to edit each `axios.get()` in each view. Building the app *will* produce errors otherwise.
+In this Nuxt install, I'm getting my data from a [Strapi](https://strapijs.org) API with axios. These are fetched with URLs exposed from my own API which are not supplied, thus if you clone and compile, you'll get an error. I'm using a JSON-file named `./api.config.js`. This file contains the URLs I need for the content of my views in JSON-format. Look at [installation](#installation) on how to create your own. The example-file contains an example on the structure I'm using, which you (of course) aren't bound to use. If you want to use a different file than the config-file, then edit each view. There's an `import { object } from ('~/.api.config')`-line in them that you need to edit. Whether or not you want to keep the structure or the file format is up to you, but building the app *will* produce errors otherwise if you don't edit each view.
 
 I might add something more elegant in the future.
 
