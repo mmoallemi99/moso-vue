@@ -52,7 +52,7 @@ import TimelineItem from '~/components/moso-timeline/moso-timeline-item.vue'
 
 import axios from 'axios'
 
-const api = require('~/api.json')
+import { resumeApi } from '~/api.config'
 
 export default {
     layout: 'default',
@@ -70,13 +70,14 @@ export default {
         if(process.client) {
             window.performance.mark('getResume:start')
         }
+        let promises = []
+        for (let [key, value] of Object.entries(resume)) {
+            promises.push(axios.get(`${value}`))
+        }
         const [
             { data: experiences },
             { data: educations }
-        ] = await Promise.all([
-            axios.get(api.resume.experiences),
-            axios.get(api.resume.educations)
-        ])
+        ] = await Promise.all(promises)
         return {
             experiences,
             educations

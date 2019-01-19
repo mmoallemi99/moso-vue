@@ -131,7 +131,7 @@ import NanoRipple from '~/components/nano-ripple/nano-ripple.vue'
 
 import axios from 'axios'
 
-const api = require('~/api.json')
+import { profileApi } from '~/api.config'
 
 export default {
     layout: 'default',
@@ -155,6 +155,10 @@ export default {
         if(process.client) {
             window.performance.mark('getProfile:start')
         }
+        let promises = []
+        for (let [key, value] of Object.entries(profile)) {
+            promises.push(axios.get(`${value}`))
+        }
         const [
             { data: titles },
             { data: devicons },
@@ -162,14 +166,7 @@ export default {
             { data: profiles },
             { data: infolists },
             { data: tools }
-        ] = await Promise.all([
-            axios.get(api.profile.titles),
-            axios.get(api.profile.devicons),
-            axios.get(api.profile.skills),
-            axios.get(api.profile.profiles),
-            axios.get(api.profile.infolists),
-            axios.get(api.profile.tools)
-        ])
+        ] = await Promise.all(promises)
         return {
             titles,
             devicons,

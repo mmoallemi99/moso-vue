@@ -38,7 +38,7 @@ import NoSSR from 'vue-no-ssr'
 
 import axios from 'axios'
 
-const api = require('~/api.json')
+import { projectsApi } from '~/api.config'
 
 export default {
     layout: 'default',
@@ -56,13 +56,14 @@ export default {
         if(process.client) {
             window.performance.mark('getProjects:start')
         }
+        let promises = []
+        for (let [key, value] of Object.entries(projectsView)) {
+            promises.push(axios.get(`${value}`))
+        }
         const [
             { data: projects },
             { data: smallprojects }
-        ] = await Promise.all([
-            axios.get(api.projects.projects),
-            axios.get(api.projects.smallprojects)
-        ])
+        ] = await Promise.all(promises)
         return {
             projects,
             smallprojects
