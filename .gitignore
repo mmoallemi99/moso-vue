@@ -11,4 +11,4 @@ npm-debug.log
 dist/
 
 # API
-api.json
+api.config.js
