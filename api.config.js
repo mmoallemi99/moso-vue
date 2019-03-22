@@ -1,5 +1,4 @@
-// This is an example on how I'm using my `api.config.js`.
-
+// .env values for Netlify
 export const profileApi = {
     titles: process.env.titles,
     devicons: process.env.devicons,
