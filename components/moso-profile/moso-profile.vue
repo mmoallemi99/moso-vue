@@ -74,6 +74,7 @@ export default {
         ul {
             display: flex;
             align-items: center;
+            justify-content: center;
             max-width: 200px;
             margin: 0 auto;
             padding: 0;
