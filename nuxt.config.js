@@ -82,9 +82,7 @@ module.exports = {
     ** Routes
     */
     generate: {
-        routes: [
-            '/'
-        ]
+        fallback: true
     },
     /*
     ** Webfontloader
