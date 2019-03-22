@@ -1,6 +1,6 @@
 module.exports = {
     /*
-    ** SPA-mode
+    ** Universal-mode
     */
     mode: 'universal',
     /*
@@ -49,7 +49,7 @@ module.exports = {
     ** CSS
     */
     css: [
-        '~/node_modules/flexgrid.co/css/flexgrid-tailwind.css',
+        '~/node_modules/flexgrid.io/css/flexgrid-tailwind.css',
         '~/assets/sass/app.scss'
     ],
     /*
