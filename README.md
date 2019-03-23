@@ -4,7 +4,7 @@ My personal portfolio (re)built\* with [Vue.js](https://vuejs.org) and [Nuxt.js]
 ### Installation
 Run `yarn install` or `npm install` to install the dependencies.
 
-If you want to use [axios](https://axios.nuxtjs.org) to fetch content from an API, you can use the example file `api.config.js.example` by typing `cp api.config.js.example api.config.js` in your favorite terminal.
+If you want to use [axios](https://axios.nuxtjs.org) to fetch content from an API, you can use the `api.config.js` as an example. The values supplied here reflects the same values in `nuxt.config.js`, so for now you'll have to double-edit some things.
 
 ### Scripts
 Since this project is built with Nuxt, you have the following scripts at hand:
@@ -18,7 +18,7 @@ $ yarn run lint       # ESLint will lint all JS- and Vue-files while ignoring fi
 $ yarn run precommit  # Same as `yarn run lint`, however recommended best practice
 ```
 
-The usual workflow is to run `yarn run dev` while developing. Then run `yarn run build` and `yarn run generate` to build the app, where the scripts will generate a `~/dist`-folder. In this folder are all the files you'd upload to your host.
+The usual workflow is to run `yarn run dev` while developing. Then run `yarn run build` and `yarn run generate` to build the app, where the scripts will generate a `~/dist`-folder. In this folder are all the files you'd upload to your host. If you, like me, host on [Netlify](https://netlify.com) you can check out [Nuxt's own docs](https://nuxtjs.org/faq/netlify-deployment) for information on how to deploy correctly.
 
 You can also run `yarn run build` and `yarn run start` on a dedicated server to run a node.js server. You will have to set up proxying to `localhost:3000` and point the webroot to `/dist/` for this to work. Some prefer this solution, and it will autogenerate the files if they're changed - ie. an ecommerce solution where the product stock changes all the time. However, since I prefer to generate a static page and host it on my webserver, I run `yarn run generate` and upload. It's all personal preference - I'm just briefly explaining the options here.
 
@@ -28,7 +28,7 @@ __You can, of course, just use `npm` if you don't have `yarn` available__.
 As of 2019 I'm utilising something called 'modern bundle'. This is very well illustrated by [Addy Osmani](https://github.com/addyosmani), prominent engineer at Google:
 ![image](https://pbs.twimg.com/media/Dwbv4WLV4AA_J6R?format=jpg)
 
-This illustration shows that using ES modules, we can cut a huge chunk of file size, and thus loading time. However, to still support older browsers, there's the 'legacy bundle'. Nuxt supports generating both. When building, I'm using a flag called `--modern=client`. This tells webpack to build both modern and legacy bundles, and serve them both. For the browser not to download both bundles, `<script type="module">` is used for 'modern' and `<script nomodule>` is used for legacy. `nomodule` was intended to be a mechanism for loading ES modules (and their dependencies) in the browser, but we don't have to use it __just__ for that. And since browsers that support `type="module` also supports `async()`/`await()`, Classes, arrow functions (`let a = () => {}`), `fetch()`, `Promise()`, `Map`, `Set`, etc, then it's obvious to use the modern bundle with `type="module"`.
+This illustration shows that using ES modules, we can cut a huge chunk of file size, and thus loading time. However, to still support older browsers, there's the 'legacy bundle'. Nuxt supports generating both. When building, I'm using a flag called `--modern=client`. This tells webpack to build both modern and legacy bundles, and serve them both. For the browser not to download both bundles, `<script type="module">` is used for 'modern' and `<script nomodule>` is used for legacy. `nomodule` was intended to be a mechanism for loading ES modules (and their dependencies) in the browser, but we don't have to use it __just__ for that. And since browsers that support `type="module"` also supports `async()`/`await()`, Classes, arrow functions (`let a = () => {}`), `fetch()`, `Promise()`, `Map`, `Set`, etc, then it's obvious to use the modern bundle with `type="module"`.
 
 However! If you serve your site with Node.js, you can set the build mode to `--modern=server` in `~/package.json`'s scripts. Using `server` will tell Node to evaluate what bundle to serve to the browser, thus not serving both bundles. More info on [Nuxt api docs](https://nuxtjs.org/api/configuration-modern).
 
@@ -38,9 +38,9 @@ __Almost__ as per Nuxt standard, the folder structure is as follows:
 - `~/assets`
 - `~/components`
 - `~/layouts`
+- `~/pages`
 - `~/plugins`
 - `~/static`
-- `~/views`*
 
 All common styling belongs in the `~/assets/sass`-folder, and the files are named so it should be easy to find what's what.
 
@@ -48,23 +48,25 @@ All the custom Vue-components resides in the `~/components`-folder.
 
 All layouts resides in the `~/layouts`-folder (yeah, really).
 
+All pages resides in `~/pages`. The routes for these are usually autogenerated by Nuxt, however, to have full control over my routes I've added a custom router file and use the [@nuxtjs/router](https://github.com/nuxt-community/router-module)-module.
+
 All custom plugin loaders and, in this case, directives and classes resides in the `~/plugins`-folder.
 
 All static content like images and fonts are stored in the `~/static`-folder, as per Nuxt standard.
 
-\* = The only difference from a standard Nuxt installation is, that I'm using a custom router config. Since the standard Nuxt generation of routes doesn't allow me to name routes manually, which I need for `this.$route.name` in the toolbar, I had to solve it this way. That means that all pages that in a standard Nuxt install resides in `~/pages`, are now stored in `~/views`, and manually set up in `~/router.js`. The Nuxt config is only set to generate the `/`-route, as this is needed for the index page to work.
+All routes are stored in `router.js`. You will have to add your routes manually.
 
 ### Routing
-As mentioned, all routes have to be set up manually. However, it's rather straight forward, and it follows [vue-router](https://router.vuejs.org/en/essentials/named-routes.html)'s scheme. All routes are residing in `/router.js`. Here's an example:
+As mentioned, all routes are set up manually. However, it's rather straight forward, and it follows [vue-router](https://router.vuejs.org/en/essentials/named-routes.html)'s scheme. All routes are residing in `/router.js`. Here's an example:
 
 ```javascript
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import PageA from '~/views/page-a.vue'
-import PageB from '~/views/page-b.vue'
-import PageC from '~/views/page-c.vue'
-import PageError from '~/views/page-error.vue'
+import PageA from '~/pages/page-a.vue'
+import PageB from '~/pages/page-b.vue'
+import PageC from '~/pages/page-c.vue'
+import PageError from '~/pages/page-error.vue'
 
 Vue.use(Router)
 
@@ -75,22 +77,18 @@ export function createRouter() {
             {
                 path: '/page-a',
                 component: PageA,
-                name: 'Page A'
             },
             {
                 path: '/page-b',
                 component: PageB,
-                name: 'Page B'
             },
             {
                 path: '/page-c',
                 component: PageC,
-                name: 'Page C'
             },
             {
                 path: '/404',
                 component: PageError,
-                name: '404 - not found'
             },
             {
                 path: '*',
@@ -106,7 +104,7 @@ This will generate the routes for `/page-a`, `/page-b`, `/page-c`, `/404`, and w
 # Editing content
 You probably want to edit the content, if you want to copy the site and just change some stuff.
 
-In this Nuxt install, I'm getting my data from a [Strapi](https://strapijs.org) API with axios. These are fetched with URLs exposed from my own API which are not supplied, thus if you clone and compile, you'll get an error. I'm using a JSON-file named `./api.config.js`. This file contains the URLs I need for the content of my views in JSON-format. Look at [installation](#installation) on how to create your own. The example-file contains an example on the structure I'm using, which you (of course) aren't bound to use. If you want to use a different file than the config-file, then edit each view. There's an `import { object } from ('~/.api.config')`-line in them that you need to edit. Whether or not you want to keep the structure or the file format is up to you, but building the app *will* produce errors otherwise if you don't edit each view.
+In this Nuxt install, I'm getting my data from a [Strapi](https://strapijs.org) API with axios. These are fetched with URLs exposed from my own API which are not supplied, thus if you clone and compile, you'll get an error. As I'm hosting this site via [Netlify](https://netlify.com] I access environment variables set on Netlify. I'm then using a combination these environment variables inside `nuxt.config.js` and a config-file named `./api.config.js`. The latter file contains the same `process.env`-variables as in `nuxt.config.js`, but split up in per-page functions. There's an `import { object } from ('~/.api.config')`-line in each page that you need to edit if you use something else, or have other values. Whether or not you want to keep the structure or the file format is up to you, but building the app *will* produce errors otherwise if you don't edit each page.
 
 I might add something more elegant in the future.
 
@@ -150,7 +148,7 @@ This is basically just the toolbar for the title and the version badge.
 A simple version badge that is literally just a string with some styling.
 
 ##### nano-ripple
-This is from the framework [Nano](https://github.com/getnano/nano-framework) that I'm working on in my sparetime. This is the small ripple you see when you click on buttons and the social icons. This is inspired by [Material Design](https://getmdl.io/components/index.html#buttons-section) (look under "button with ripple") and requires a custom directive and a custom class which are both included in this project.
+This is from the framework [Nano](https://github.com/getnano/nano-framework). This is the small ripple you see when you click on buttons and the social icons. This is inspired by [Material Design](https://getmdl.io/components/index.html#buttons-section) (look under "button with ripple") and requires a custom directive and a custom class which are both included in this project.
 
 # Issues?
 Please report any issues and non-working stuff here on GitHub.
