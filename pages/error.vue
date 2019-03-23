@@ -29,7 +29,7 @@ export default {
     },
     head() {
         return {
-            title: this.title
+            title: 'Morten Sørensen | ' + this.title
         }
     },
     mounted () {
