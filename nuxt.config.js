@@ -1,3 +1,8 @@
+/*
+** dot env
+*/
+require('dotenv').config()
+
 module.exports = {
     /*
     ** Universal-mode
@@ -64,8 +69,9 @@ module.exports = {
     ** Modules
     */
     modules: [
-        '@nuxtjs/router',
         '@nuxtjs/axios',
+        ['@nuxtjs/dotenv', { systemvars: true }],
+        '@nuxtjs/router',
         'nuxt-webfontloader'
     ],
     /*
@@ -116,5 +122,20 @@ module.exports = {
     plugins: [
         '~/plugins/Ripple',
         { src: '~/plugins/vue-masonry', ssr: false }
-    ]
+    ],
+    /*
+    ** Netlify environment variables
+    */
+    env: {
+        titles: process.env.titles,
+        devicons: process.env.devicons,
+        skills: process.env.skills,
+        profiles: process.env.profiles,
+        infolists: process.env.infolists,
+        tools: process.env.tools,
+        projects: process.env.projects,
+        smallprojects: process.env.smallprojects,
+        experiences: process.env.experiences,
+        educations: process.env.educations
+    }
 }
