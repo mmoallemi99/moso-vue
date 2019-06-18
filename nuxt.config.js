@@ -95,7 +95,7 @@ module.exports = {
     */
     webfontloader: {
         google: {
-            families: ['Source+Sans+Pro:300,400,600']
+            families: ['Source+Sans+Pro:300,400,600&display=swap']
         }
     },
     /*
